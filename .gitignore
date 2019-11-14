@@ -5,3 +5,11 @@
 browser/node_modules/
 
 server/node_modules/
+
+browser/.idea/
+
+server/.idea/
+
+browser/.vscode/
+
+server/.vscode/
