@@ -1,0 +1,7 @@
+.idea/
+
+.vscode/
+
+browser/node_modules/
+
+server/node_modules/
