@@ -1,0 +1,26 @@
+.nav {
+  position: relative;
+  background-color: #1890ff;
+  height: 40px;
+  text-align: right;
+}
+
+.nav-user {
+  position: relative;
+  height: 100%;
+  line-height: 40px;
+}
+
+.nav-login, .nav-sign{
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-login:link, .nav-sign:link, .nav-login:visited, .nav-sign:visited{
+  color: white;
+}
+
+.nav-login:hover, .nav-sign:hover, .nav-login:active, .nav-sign:active{
+  color: #f74d5d;
+}

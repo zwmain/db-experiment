@@ -1,4 +1,7 @@
 import React from 'react';
+import Nav from "./components/nav/nav.jsx";
+import Main from "./components/main/main.jsx";
+import {BrowserRouter as Router} from 'react-router-dom';
 
 class App extends React.Component {
   constructor(x) {
@@ -6,7 +9,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <div>数据库实验</div>;
+    return <div id={'app'}>
+      <Router>
+        <Nav/>
+        <Main/>
+      </Router>
+    </div>;
   }
 }
 
