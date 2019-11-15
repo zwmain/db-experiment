@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+html, body, #root, #app {
+  height: 100%;
+}
+
 #root {
   position: absolute;
   width: 100%;
@@ -9,7 +13,8 @@ body {
 }
 
 #app {
-  position: relative;
+  position: absolute;
+  width: 100%;
 }
 
 .inline-block {

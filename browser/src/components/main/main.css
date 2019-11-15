@@ -1,4 +1,9 @@
 .main {
-  position: relative;
+  position: absolute;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  padding-top: 40px;
   background-color: #f74d5d;
 }
