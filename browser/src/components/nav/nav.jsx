@@ -9,13 +9,13 @@ class Nav extends React.Component {
     super(x);
   }
 
-  isLogin(){
-    let {user}=this.props;
-    return !(user.userId==='');
+  isLogin() {
+    let {user} = this.props;
+    return !(user.userId === '');
   }
 
   render() {
-    let {user}=this.props;
+    let {user} = this.props;
     return <header className={'nav'}>
       {
         this.isLogin() ?
