@@ -9,12 +9,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <div id={'app'}>
-      <Router>
+    return <Router>
+      <div id={'app'}>
         <Nav/>
         <Main/>
-      </Router>
-    </div>;
+      </div>
+    </Router>;
   }
 }
 

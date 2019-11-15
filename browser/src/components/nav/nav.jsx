@@ -1,6 +1,6 @@
 import React from 'react';
-import {isLogin, getUserName} from '../../api/user/user';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import './nav.css';
 
@@ -9,13 +9,19 @@ class Nav extends React.Component {
     super(x);
   }
 
+  isLogin(){
+    let {user}=this.props;
+    return !(user.userId==='');
+  }
+
   render() {
+    let {user}=this.props;
     return <header className={'nav'}>
       {
-        isLogin() ?
+        this.isLogin() ?
           <span className={'inline-block nav-user'}>
          <a href="#" className={'nav-login'}>你好</a>
-         <a href="#" className={'nav-sign'}>{getUserName()}</a>
+         <a href="#" className={'nav-sign'}>{user.userName}</a>
        </span>
           :
           <span className={'inline-block nav-user'}>
@@ -27,4 +33,10 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps)(Nav);
