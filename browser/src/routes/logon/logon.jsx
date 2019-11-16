@@ -1,11 +1,14 @@
 import React from 'react';
+import LogonForm from '../../components/logon-form/logon-form.jsx';
 
 class Logon extends React.Component{
   constructor(x){
     super(x);
   }
   render() {
-    return <div>Logon</div>;
+    return <div className={'logon'}>
+      <LogonForm/>
+    </div>;
   }
 }
 

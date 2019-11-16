@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { Icon } from 'antd';
 
 import './nav.css';
 
@@ -17,6 +18,9 @@ class Nav extends React.Component {
   render() {
     let {user} = this.props;
     return <header className={'nav'}>
+      <span className={'inline-block nav-home'}>
+        <Link to={'/'} className={'nav-sign'}><Icon type={'home'}/></Link>
+      </span>
       {
         this.isLogin() ?
           <span className={'inline-block nav-user'}>

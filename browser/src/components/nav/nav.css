@@ -7,7 +7,7 @@
   z-index: 1;
 }
 
-.nav-user {
+.nav-user, .nav-home {
   position: relative;
   height: 100%;
   line-height: 40px;
@@ -25,4 +25,9 @@
 
 .nav-login:hover, .nav-sign:hover, .nav-login:active, .nav-sign:active {
   color: #f74d5d;
+}
+
+.nav-home {
+  position: absolute;
+  left: 0;
 }

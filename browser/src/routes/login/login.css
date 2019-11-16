@@ -1,3 +1,8 @@
 .login {
   position: relative;
+  width: 320px;
+  margin: 10% auto;
+  padding: 20px;
+  border: solid #eeeeee 1px;
+  border-radius: 4px;
 }
