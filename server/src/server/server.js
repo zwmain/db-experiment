@@ -1,6 +1,9 @@
+const Url=require('url');
+
 function dealReq(req, res) {
-    console.log(req.path);
-    res.write('测试');
+    let myUrl=Url.parse(req.url,true);
+    res.write(req.method);
+    res.write(JSON.stringify(myUrl));
     res.end();
 }
 
