@@ -1,5 +1,6 @@
 import React from 'react';
-import {Form, Icon, Input, Button, Checkbox} from 'antd';
+import {Form, Icon, Input, Button, message} from 'antd';
+import {login} from '../../api/user/user';
 
 class LoginForm extends React.Component {
     constructor(x) {
@@ -12,6 +13,12 @@ class LoginForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('表单值：', values);
+                const res = login(values);
+                res.then(v => {
+                    console.log(v);
+                }).catch(e => {
+                    message.error(e.toString());
+                })
             }
         });
     };
