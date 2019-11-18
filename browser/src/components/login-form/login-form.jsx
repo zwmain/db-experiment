@@ -12,10 +12,14 @@ class LoginForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('表单值：', values);
                 const res = login(values);
                 res.then(v => {
-                    console.log(v);
+                    let res = v.data;
+                    if (res.status === 0) {
+                        message.success(res.message);
+                    } else {
+                        message.warn(res.message);
+                    }
                 }).catch(e => {
                     message.error(e.toString());
                 })
