@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table} from 'antd';
+import {Table, Button} from 'antd';
 
 import './flight-list.css'
 
@@ -41,9 +41,28 @@ class FlightList extends React.Component {
         title: '容量',
         key: 'availability',
         dataIndex: 'availability'
+      },
+      {
+        title: '订购',
+        key: 'order',
+        dataIndex: 'order',
+        render: (text, record, index) => {
+          return <Button
+            onClick={() => {
+              this.onOrder(text, record, index)
+            }}>
+            订购
+          </Button>;
+        }
       }
     ];
     this.dataSource = [];
+
+    this.onOrder = this.onOrder.bind(this);
+  }
+
+  onOrder(text, record, index) {
+    console.log(index);
   }
 
   render() {
