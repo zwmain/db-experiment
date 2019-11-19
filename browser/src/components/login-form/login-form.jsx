@@ -1,6 +1,9 @@
 import React from 'react';
 import {Form, Icon, Input, Button, message} from 'antd';
 import {login} from '../../api/user/user';
+import {loginAction} from '../../redux/action/user';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 class LoginForm extends React.Component {
     constructor(x) {
@@ -16,6 +19,8 @@ class LoginForm extends React.Component {
                 res.then(v => {
                     let res = v.data;
                     if (res.status === 0) {
+                        this.props.saveUser(res.data);
+                        this.props.history.replace('/');
                         message.success(res.message);
                     } else {
                         message.warn(res.message);
@@ -62,4 +67,12 @@ class LoginForm extends React.Component {
     }
 }
 
-export default Form.create({name: 'normal_login'})(LoginForm);
+function mapDispatchToProps(dispatch) {
+    return {
+        saveUser: userData => {
+            dispatch(loginAction(userData))
+        }
+    };
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(Form.create({name: 'normal_login'})(LoginForm)));

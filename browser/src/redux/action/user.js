@@ -1,12 +1,9 @@
 import {LOGIN, LOGON, LOGOUT} from './action';
 
-function loginAction(userId = '', password = '') {
+function loginAction(userData) {
   return {
     type: LOGIN,
-    data: {
-      userId,
-      password
-    }
+    data: userData
   };
 }
 

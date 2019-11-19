@@ -6,4 +6,9 @@ function login(user = null) {
     return pro;
 }
 
-export {login};
+function logon(user = null) {
+    const pro = ajax(baseURL + 'logon', user);
+    return pro;
+}
+
+export {login, logon};

@@ -1,18 +1,24 @@
-const login=require('./login');
+const login = require('./login');
+const logon = require('./logon');
 
 function dealReq(req, res) {
     let data = '';
     req.on('data', v => {
-        data += v;
+        data += v.toString();
     });
     req.on('end', () => {
+        data = JSON.parse(data.toString());
         switch (req.url) {
-            case '/api/login':{
-                login(res,data);
+            case '/api/login': {
+                login(res, data);
                 break;
             }
-            default:{
-                res.write(JSON.stringify({status:0,message:'接口不存在'}));
+            case '/api/logon': {
+                logon(res, data);
+                break;
+            }
+            default: {
+                res.write(JSON.stringify({status: 1, message: '接口不存在'}));
                 res.end();
                 break;
             }

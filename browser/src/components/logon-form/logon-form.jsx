@@ -12,7 +12,7 @@ class LogonForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('表单值：', values);
+                this.props.submit(values);
             }
         });
     }

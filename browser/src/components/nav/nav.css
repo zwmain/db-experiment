@@ -14,6 +14,7 @@
 }
 
 .nav-login, .nav-sign {
+  color: white;
   margin: 0 0.5rem;
   text-decoration: none;
   font-weight: bold;
@@ -30,4 +31,12 @@
 .nav-home {
   position: absolute;
   left: 0;
+}
+
+.nav-logout {
+  color: #ffffff;
+}
+
+.nav-logout:hover{
+  color: #f74d5d;
 }
