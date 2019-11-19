@@ -1,11 +1,19 @@
 import React from 'react';
+import SearchBar from "../../components/search-bar/search-bar.jsx";
+import FlightList from "../../components/flight-list/flight-list.jsx";
 
-class Flight extends React.Component{
-  constructor(x){
+import './flight.css';
+
+class Flight extends React.Component {
+  constructor(x) {
     super(x);
   }
+
   render() {
-    return <div>Flight</div>;
+    return <div className={'flight'}>
+      <SearchBar/>
+      <FlightList/>
+    </div>;
   }
 }
 

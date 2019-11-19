@@ -1,0 +1,11 @@
+.search-bar {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.search-area, .search-date {
+  margin-right: 0.5rem;
+}
