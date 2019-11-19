@@ -7,11 +7,17 @@ import './flight.css';
 class Flight extends React.Component {
   constructor(x) {
     super(x);
+
+    this.searchFlight = this.searchFlight.bind(this);
+  }
+
+  searchFlight(v) {
+    console.log(v);
   }
 
   render() {
     return <div className={'flight'}>
-      <SearchBar/>
+      <SearchBar submit={this.searchFlight}/>
       <FlightList/>
     </div>;
   }

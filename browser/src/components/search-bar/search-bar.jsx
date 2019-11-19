@@ -32,32 +32,39 @@ class SearchBar extends React.Component {
       oriCity: this.defaultOriCity[this.defaultOriCity.length - 1],
       tarCity: this.defaultTarCity[this.defaultTarCity.length - 1],
       flyDate: this.defaultDate.format('YYYY-MM-DD')
-    }
+    };
 
     this.onOriAreaChange = this.onOriAreaChange.bind(this);
     this.onTarAreaChange = this.onTarAreaChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   onOriAreaChange(v) {
-    console.log(v);
     this.setState({
       oriCity: v[v.length - 1]
     });
   }
 
   onTarAreaChange(v) {
-    console.log(v);
     this.setState({
       tarCity: v[v.length - 1]
     });
   }
 
   onDateChange(v) {
-    console.log(v.format('YYYY-MM-DD'));
     this.setState({
       flyDate: v.format('YYYY-MM-DD')
     });
+  }
+
+  submit() {
+    let data = {
+      oriCity: this.state.oriCity,
+      tarCity: this.state.tarCity,
+      flyDate: this.state.flyDate
+    };
+    this.props.submit(data);
   }
 
   render() {
@@ -80,7 +87,7 @@ class SearchBar extends React.Component {
         className={'search-date'}
         onChange={this.onDateChange}
       />
-      <Button type="primary" icon="search">
+      <Button type="primary" icon="search" onClick={this.submit}>
         查询
       </Button>
     </div>;
