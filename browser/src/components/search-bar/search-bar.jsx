@@ -9,23 +9,23 @@ class SearchBar extends React.Component {
     super(x);
     this.cityOptions = [
       {
-        value: 'hubei',
+        value: '湖北',
         label: '湖北',
         children: [
           {
-            value: 'wuhan',
+            value: '武汉',
             label: '武汉'
           }
         ]
       },
       {
-        value: 'beijing',
+        value: '北京',
         label: '北京'
       }
     ];
 
-    this.defaultOriCity = ['hubei', 'wuhan'];
-    this.defaultTarCity = ['beijing'];
+    this.defaultOriCity = ['湖北', '武汉'];
+    this.defaultTarCity = ['北京'];
     this.defaultDate = moment(new Date(), 'YYYY-MM-DD');
 
     this.state = {

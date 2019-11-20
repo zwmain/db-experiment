@@ -23,4 +23,16 @@ function initSqlConnect() {
     });
 }
 
-module.exports = {MySqlConnect, initSqlConnect};
+function execSql(sql = '') {
+    return new Promise((resolve, reject) => {
+        MySqlConnect.query(sql, (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
+module.exports = {MySqlConnect, initSqlConnect, execSql};

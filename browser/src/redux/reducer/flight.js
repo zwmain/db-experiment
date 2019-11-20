@@ -5,7 +5,7 @@ let initFlightState = [];
 function flightReducer(state = initFlightState, action) {
     switch (action.type) {
         case QUERY_FLIGHTS: {
-            return initFlightState;
+            return action.data;
         }
         default: {
             return initFlightState;

@@ -1,5 +1,6 @@
 const login = require('./login');
 const logon = require('./logon');
+const flight = require('./flights');
 
 function dealReq(req, res) {
     let data = '';
@@ -15,6 +16,10 @@ function dealReq(req, res) {
             }
             case '/api/logon': {
                 logon(res, data);
+                break;
+            }
+            case '/api/flights': {
+                flight(res, data);
                 break;
             }
             default: {
