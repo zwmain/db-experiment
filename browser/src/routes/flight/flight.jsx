@@ -33,7 +33,11 @@ class Flight extends React.Component {
         const pro = orderFlight(orderData);
         pro.then(value => {
             let res = value.data;
-            console.log(res);
+            if (res.status === 0) {
+                message.success(res.message);
+            } else {
+                message.warn(res.message);
+            }
         }).catch(e => {
             message.error(e.toString());
         });
