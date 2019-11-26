@@ -33,15 +33,15 @@ class Nav extends React.Component {
             {
                 this.isLogin() ?
                     <span className={'inline-block nav-user'}>
-         <a href="#" className={'nav-login'}>你好</a>
-         <a className={'nav-sign'}>{user.userName}</a>
-            <Button type={'link'} className={'nav-logout'} onClick={this.logout}>注销</Button>
-       </span>
+                        <a href="#" className={'nav-login'}>你好</a>
+                        <Link to={'/order'} className={'nav-sign'}>{user.userName}</Link>
+                        <Button type={'link'} className={'nav-logout'} onClick={this.logout}>注销</Button>
+                    </span>
                     :
                     <span className={'inline-block nav-user'}>
-         <Link to={'/login'} className={'nav-login'}>登录</Link>
-         <Link to={'/logon'} className={'nav-sign'}>注册</Link>
-       </span>
+                        <Link to={'/login'} className={'nav-login'}>登录</Link>
+                        <Link to={'/logon'} className={'nav-sign'}>注册</Link>
+                    </span>
             }
         </header>;
     }

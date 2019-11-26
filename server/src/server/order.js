@@ -1,6 +1,16 @@
 const Message = require('./Message');
-const {queryOrderExact, addOrder} = require('../api/order');
+const {queryOrderExact, addOrder, queryOrderByUser} = require('../api/order');
 const {queryVoyage, updateVoyage} = require('../api/flight');
+
+function orderList(res, data) {
+    queryOrderByUser(data.userId).then(value => {
+        res.write(JSON.stringify(new Message(0, '查询成功', value)));
+    }).catch(e => {
+        res.write(JSON.stringify(new Message(1, 'OrderList' + e.toString())));
+    }).finally(() => {
+        res.end();
+    });
+}
 
 async function orderFlight(res, data) {
     //查询是否已经订票
@@ -26,5 +36,6 @@ async function orderFlight(res, data) {
 }
 
 module.exports = {
-    orderFlight
+    orderFlight,
+    orderList
 };

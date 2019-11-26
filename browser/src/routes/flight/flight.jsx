@@ -5,6 +5,7 @@ import {queryFlightsAction} from '../../redux/action/flight';
 import {connect} from 'react-redux';
 import {message} from 'antd';
 import {orderFlight} from '../../api/order/order';
+import { withRouter } from 'react-router-dom'
 
 import './flight.css';
 
@@ -89,4 +90,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Flight);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Flight));

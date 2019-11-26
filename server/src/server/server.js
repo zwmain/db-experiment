@@ -1,7 +1,7 @@
 const login = require('./login');
 const logon = require('./logon');
 const flight = require('./flights');
-const {orderFlight} = require('./order');
+const {orderFlight, orderList} = require('./order');
 
 function dealReq(req, res) {
     let data = '';
@@ -25,6 +25,10 @@ function dealReq(req, res) {
             }
             case '/api/orderFlight': {
                 orderFlight(res, data);
+                break;
+            }
+            case '/api/orderList': {
+                orderList(res, data);
                 break;
             }
             default: {
