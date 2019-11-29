@@ -8,7 +8,7 @@ function flightReducer(state = initFlightState, action) {
             return action.data;
         }
         default: {
-            return initFlightState;
+            return state;
         }
     }
 }
