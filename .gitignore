@@ -6,10 +6,16 @@ browser/node_modules/
 
 server/node_modules/
 
+admin/node_modules/
+
 browser/.idea/
 
 server/.idea/
 
+admin/.idea/
+
 browser/.vscode/
 
 server/.vscode/
+
+admin/.vscode/
