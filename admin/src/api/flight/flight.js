@@ -12,3 +12,7 @@ export function getAllFlights() {
 export function rmFlight(data) {
   return ajax(baseURL + 'rmFlight', data);
 }
+
+export function changeFlight(data) {
+  return ajax(baseURL + 'changeFlight', data);
+}

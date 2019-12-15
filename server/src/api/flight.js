@@ -69,11 +69,42 @@ function rmFlight(data) {
   return execSql(sql);
 }
 
+function changeFlight(data) {
+  const { flightItem, oldItem } = data;
+  const {
+    flightId,
+    flyTime,
+    arrTime,
+    oriCity,
+    tarCity,
+    price,
+    capacity,
+    planeType,
+    flightCompany
+  } = flightItem;
+  const sql = `
+  update flight
+  set
+  flightId='${flightId}',
+  flyTime='${flyTime}',
+  arrTime='${arrTime}',
+  oriCity='${oriCity}',
+  tarCity='${tarCity}',
+  price=${price},
+  capacity=${capacity},
+  planeType='${planeType}',
+  flightCompany='${flightCompany}'
+  where flightId='${oldItem.flightId}' and flyTime='${oldItem.flyTime}'
+  `;
+  return execSql(sql);
+}
+
 module.exports = {
   queryFlights,
   queryVoyage,
   updateVoyage,
   queryAllFlights,
   addFlight,
-  apiRmFlight: rmFlight
+  apiRmFlight: rmFlight,
+  apiChangeFlight: changeFlight
 };

@@ -1,5 +1,11 @@
 const Message = require('./Message');
-const { queryFlights, queryAllFlights, addFlight, apiRmFlight } = require('../api/flight');
+const {
+  queryFlights,
+  queryAllFlights,
+  addFlight,
+  apiRmFlight,
+  apiChangeFlight
+} = require('../api/flight');
 
 function flights(res, data) {
   queryFlights(data)
@@ -53,9 +59,23 @@ function rmFlight(res, data) {
     });
 }
 
+function changeFlight(res, data) {
+  apiChangeFlight(data)
+    .then(() => {
+      res.write(JSON.stringify(new Message(0, '修改成功')));
+    })
+    .catch(e => {
+      res.write(JSON.stringify(new Message(1, '修改失败' + e.toString())));
+    })
+    .finally(() => {
+      res.end();
+    });
+}
+
 module.exports = {
   flights,
   getAllFlights,
   addToFlight,
-  rmFlight
+  rmFlight,
+  changeFlight
 };

@@ -1,6 +1,6 @@
 const login = require('./login');
 const logon = require('./logon');
-const { flight, getAllFlights, addToFlight, rmFlight } = require('./flights');
+const { flight, getAllFlights, addToFlight, rmFlight, changeFlight } = require('./flights');
 const { orderFlight, orderList } = require('./order');
 
 function dealReq(req, res) {
@@ -41,6 +41,10 @@ function dealReq(req, res) {
       }
       case '/api/rmFlight': {
         rmFlight(res, data);
+        break;
+      }
+      case '/api/changeFlight': {
+        changeFlight(res, data);
         break;
       }
       default: {
