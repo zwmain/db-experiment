@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, InputNumber, TimePicker, Cascader, Select, Button, message } from 'antd';
 import moment from 'moment';
 import ManageFlight from '../../components/manage-flight/manage-flight.jsx';
+import { addFlight as apiAddFlight } from '../../api/flight/flight';
 
 const { Option } = Select;
 
@@ -43,6 +44,7 @@ class Flight extends React.Component {
       planeType: '大型',
       flightCompany: '中国航空'
     };
+    this.getAllFlights = null;
 
     this.onFightIdChange = this.onFightIdChange.bind(this);
     this.onFlyTimeChange = this.onFlyTimeChange.bind(this);
@@ -54,6 +56,7 @@ class Flight extends React.Component {
     this.onPlaneTypeChange = this.onPlaneTypeChange.bind(this);
     this.onCompanyChange = this.onCompanyChange.bind(this);
     this.addFlight = this.addFlight.bind(this);
+    this.getChildFunc=this.getChildFunc.bind(this);
   }
 
   onFightIdChange(e) {
@@ -102,11 +105,27 @@ class Flight extends React.Component {
   }
 
   addFlight() {
-    console.log(this.flightItem);
     if (this.flightItem.flightId === '') {
       message.warn('航班号不能为空！');
       return null;
     }
+    apiAddFlight(this.flightItem)
+      .then(res => {
+        let value = res.data;
+        if (value.status === 0) {
+          message.success('添加成功');
+          this.getAllFlights();
+        } else {
+          message.error('添加失败' + value.data);
+        }
+      })
+      .catch(e => {
+        message.error('添加失败' + e.toString());
+      });
+  }
+
+  getChildFunc(fn){
+    this.getAllFlights=fn;
   }
 
   render() {
@@ -224,7 +243,7 @@ class Flight extends React.Component {
             </Button>
           </div>
         </div>
-        <ManageFlight/>
+        <ManageFlight deliverFunc={this.getChildFunc} />
       </div>
     );
   }

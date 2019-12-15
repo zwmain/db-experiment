@@ -1,10 +1,10 @@
-import {QUERY_FLIGHTS} from '../action/action';
+import {GET_ALL_FLIGHTS} from '../action/action';
 
 let initFlightState = [];
 
 function flightReducer(state = initFlightState, action) {
     switch (action.type) {
-        case QUERY_FLIGHTS: {
+        case GET_ALL_FLIGHTS: {
             return action.data;
         }
         default: {

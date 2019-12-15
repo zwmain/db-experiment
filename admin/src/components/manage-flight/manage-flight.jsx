@@ -1,11 +1,18 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, message, Button } from 'antd';
+import { connect } from 'react-redux';
+import { actionGetAllFlights } from '../../redux/action/flight';
+import {
+  getAllFlights as apiGetAllFlights,
+  rmFlight as apiRmFlight
+} from '../../api/flight/flight';
 
 import './manage-flight.css';
 
 class ManageFlight extends React.Component {
   constructor(x) {
     super(x);
+
     this.columns = [
       {
         title: '航班号',
@@ -45,8 +52,8 @@ class ManageFlight extends React.Component {
       },
       {
         title: '容量',
-        key: 'remain',
-        dataIndex: 'remain',
+        key: 'capacity',
+        dataIndex: 'capacity',
         align: 'center'
       },
       {
@@ -66,11 +73,11 @@ class ManageFlight extends React.Component {
         key: 'order',
         dataIndex: 'order',
         align: 'center',
-        render: (text, record, index) => {
+        render: (text, record) => {
           return (
             <Button
               onClick={() => {
-                // this.onOrder(text, record, index);
+                this.rmFlight(record);
               }}
             >
               删除
@@ -79,19 +86,75 @@ class ManageFlight extends React.Component {
         }
       }
     ];
+
+    this.getAllFlights = this.getAllFlights.bind(this);
+    this.rmFlight = this.rmFlight.bind(this);
+
+    this.getAllFlights();
+    this.props.deliverFunc(this.getAllFlights);
   }
+
+  getAllFlights() {
+    apiGetAllFlights()
+      .then(value => {
+        let res = value.data;
+        if (res.status === 0) {
+          this.props.getAllFlightsDispatch(res.data);
+        } else {
+          console.log('获取失败');
+        }
+      })
+      .catch(e => {
+        console.log(e.toString());
+      });
+  }
+
+  rmFlight(data) {
+    const { flightId, flyTime } = data;
+    apiRmFlight({
+      flightId,
+      flyTime
+    })
+      .then(value => {
+        let res = value.data;
+        if (res.status === 0) {
+          message.success('删除成功');
+          this.getAllFlights();
+        }
+      })
+      .catch(e => {
+        message.error('删除失败：' + e.toString());
+      });
+  }
+
   render() {
+    const { flights } = this.props;
     return (
       <div className={'manage-flight'}>
         <Table
           columns={this.columns}
-          key={record => {
+          rowKey={record => {
             return record.flightId + record.flyTime;
           }}
+          dataSource={flights}
         />
       </div>
     );
   }
 }
 
-export default ManageFlight;
+function mapStateToProps(state) {
+  return {
+    flights: state.flights
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getAllFlightsDispatch: data => {
+      dispatch(actionGetAllFlights(data));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageFlight);
