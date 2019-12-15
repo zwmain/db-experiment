@@ -116,7 +116,7 @@ class Flight extends React.Component {
           message.success('添加成功');
           this.getAllFlights();
         } else {
-          message.error('添加失败' + value.data);
+          message.error('添加失败' + value.message);
         }
       })
       .catch(e => {
