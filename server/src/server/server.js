@@ -2,6 +2,7 @@ const login = require('./login');
 const logon = require('./logon');
 const { flight, getAllFlights, addToFlight, rmFlight, changeFlight } = require('./flights');
 const { orderFlight, orderList } = require('./order');
+const { addVoyage, getAllVoyages, rmVoyage, changeVoyage } = require('./voyage');
 
 function dealReq(req, res) {
   let data = '';
@@ -45,6 +46,22 @@ function dealReq(req, res) {
       }
       case '/api/changeFlight': {
         changeFlight(res, data);
+        break;
+      }
+      case '/api/addVoyage': {
+        addVoyage(res, data);
+        break;
+      }
+      case '/api/getAllVoyages': {
+        getAllVoyages(res);
+        break;
+      }
+      case '/api/rmVoyage': {
+        rmVoyage(res, data);
+        break;
+      }
+      case '/api/changeVoyage': {
+        changeVoyage(res, data);
         break;
       }
       default: {
