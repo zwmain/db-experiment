@@ -137,9 +137,6 @@ class ManageFlight extends React.Component {
         let res = value.data;
         if (res.status === 0) {
           this.props.getAllFlightsDispatch(res.data);
-          let editable = new Array(res.data.length);
-          editable.fill(false);
-          this.setState({ editable: editable });
         } else {
           console.log('获取失败');
         }

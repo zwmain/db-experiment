@@ -27,10 +27,10 @@ class LoginForm extends React.Component {
                     }
                 }).catch(e => {
                     message.error(e.toString());
-                })
+                });
             }
         });
-    };
+    }
 
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -70,7 +70,7 @@ class LoginForm extends React.Component {
 function mapDispatchToProps(dispatch) {
     return {
         saveUser: userData => {
-            dispatch(loginAction(userData))
+            dispatch(loginAction(userData));
         }
     };
 }

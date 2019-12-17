@@ -25,8 +25,18 @@ function rmStaff(data) {
   return execSql(sql);
 }
 
+function login(data) {
+  const { staffName, staffPwd } = data;
+  const sql = `
+  select * from staff
+  where staffName='${staffName}' and staffPwd='${staffPwd}'
+  `;
+  return execSql(sql);
+}
+
 module.exports = {
   apiAddStaff: addStaff,
   apiGetAllStaffs: getAllStaffs,
-  apiRmStaff: rmStaff
+  apiRmStaff: rmStaff,
+  login
 };

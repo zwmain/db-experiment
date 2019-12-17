@@ -12,3 +12,7 @@ export function getAllStaffs() {
 export function rmStaff(data) {
   return ajax(baseURL + 'rmStaff', data);
 }
+
+export function login(data) {
+  return ajax(baseURL + 'staffLogin', data);
+}

@@ -1,0 +1,17 @@
+.login, .login-form {
+  position: relative;
+}
+
+.login{
+  height: 100vh;
+  background-color: #eeeeee;
+}
+
+.login-form {
+  margin: auto;
+  width: 350px;
+  top: 30%;
+  background-color: white;
+  padding: 1em 1.5em;
+  border-radius: 5px;
+}
