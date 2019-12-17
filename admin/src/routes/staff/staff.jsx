@@ -29,6 +29,7 @@ class Staff extends React.Component {
       .then(v => {
         let res = v.data;
         if (res.status === 0) {
+          this.getStaffs();
           message.success('添加成功');
         } else {
           message.error(res.message);
